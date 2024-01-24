@@ -1,4 +1,3 @@
-import 'package:benzy/view/home_page/home_page.dart';
 import 'package:benzy/view/landing_page/landing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
