@@ -11,4 +11,10 @@ class AssetImageUrls {
     'assets/navbarimages/menu.png',
     'assets/navbarimages/recharge.png',
   ];
+  static String topupIcon = 'assets/topup.png';
+  static String calenderIcon = 'assets/calender.png';
+  static String noticeBoardIcon = 'assets/notice.png';
+  static String handIcon = 'assets/hand.png';
+  static String salesIcon = 'assets/sales.png';
+  static String myAccountIcon = 'assets/account.png';
 }

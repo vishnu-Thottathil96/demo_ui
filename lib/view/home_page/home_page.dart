@@ -66,13 +66,9 @@ class HomePage extends StatelessWidget {
                       ClipRRect(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(25)),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 0,
-                          child: Image.asset(
-                            AssetImageUrls.listviewImages[index],
-                            fit: BoxFit.cover,
-                          ),
+                        child: Image.asset(
+                          AssetImageUrls.listviewImages[index],
+                          fit: BoxFit.cover,
                         ),
                       ),
                       const Padding(
@@ -97,13 +93,79 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Row(
-            children: [
-              BottomContainer(screenHeight: screenHeight),
-            ],
-          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: (screenWidth - screenWidth / 1.2) / 2,
+            ),
+            child: Column(
+              children: [
+                BottomContainerRow(
+                  screenHeight: screenHeight,
+                  imageUrl1: AssetImageUrls.topupIcon,
+                  text1: ' Top Up Balance ',
+                  imageUrl2: AssetImageUrls.calenderIcon,
+                  text2: '  Travel Calender  ',
+                ),
+                SizedBox(height: screenHeight / 35),
+                BottomContainerRow(
+                  screenHeight: screenHeight,
+                  imageUrl1: AssetImageUrls.noticeBoardIcon,
+                  text1: 'Notice Board',
+                  imageUrl2: AssetImageUrls.handIcon,
+                  text2: 'Hold Iteneraries',
+                ),
+                SizedBox(height: screenHeight / 35),
+                BottomContainerRow(
+                  screenHeight: screenHeight,
+                  imageUrl1: AssetImageUrls.salesIcon,
+                  text1: 'Sales',
+                  imageUrl2: AssetImageUrls.myAccountIcon,
+                  text2: 'My Account',
+                ),
+                SizedBox(height: screenHeight / 35),
+              ],
+            ),
+          )
         ],
       ),
+    );
+  }
+}
+
+class BottomContainerRow extends StatelessWidget {
+  const BottomContainerRow({
+    super.key,
+    required this.screenHeight,
+    required this.imageUrl1,
+    required this.text1,
+    required this.imageUrl2,
+    required this.text2,
+  });
+
+  final double screenHeight;
+  final String imageUrl1;
+  final String text1;
+  final String imageUrl2;
+  final String text2;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        BottomContainer(
+          screenHeight: screenHeight,
+          imageUrl: imageUrl1,
+          text: text1,
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+        BottomContainer(
+          screenHeight: screenHeight,
+          imageUrl: imageUrl2,
+          text: text2,
+        ),
+      ],
     );
   }
 }
@@ -112,9 +174,13 @@ class BottomContainer extends StatelessWidget {
   const BottomContainer({
     super.key,
     required this.screenHeight,
+    required this.imageUrl,
+    required this.text,
   });
 
   final double screenHeight;
+  final String imageUrl;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -130,17 +196,17 @@ class BottomContainer extends StatelessWidget {
             children: [
               SizedBox(
                 child: Image(
-                  image: const AssetImage(
-                    "assets/topup.png",
+                  image: AssetImage(
+                    imageUrl,
                   ),
-                  height: screenHeight / 30,
+                  height: screenHeight / 35,
                 ),
               ),
               const SizedBox(
                 width: 5,
               ),
-              const Text(
-                'Top Up Balance',
+              Text(
+                text,
               )
             ],
           ),
